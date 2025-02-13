@@ -39,4 +39,5 @@ jobs:
         with:
           executable-name: mdict-rs
           target: ${{ matrix.platform.target }}
+          extra-files: "resources"
           changes-file:
