@@ -13,9 +13,9 @@ struct Cli {
     #[arg(short, long, value_name = "PATH")]
     dict_dir: Option<PathBuf>,
 
-    /// Path to the site root directory. This directory serves as the root for static assets like HTML, CSS, and JavaScript.
+    /// Path to the static files directory. This directory serves as the root for site assets like HTML, CSS, and JavaScript.
     #[arg(short, long, value_name = "PATH")]
-    site_root: Option<PathBuf>,
+    static_dir: Option<PathBuf>,
 }
 
 static ARGS: LazyLock<Cli> = LazyLock::new(|| Cli::parse());
@@ -58,20 +58,20 @@ fn get_dict_path() -> Result<PathBuf> {
     }
 }
 
-pub fn get_site_path() -> Result<PathBuf> {
+pub fn get_static_path() -> Result<PathBuf> {
     let p = ARGS
-        .site_root
+        .static_dir
         .as_ref()
         .filter(|i| i.exists() && i.is_dir())
         .cloned();
     if let Some(p) = p {
         Ok(p)
     } else {
-        let p = PathBuf::from("resources/site");
+        let p = PathBuf::from("resources/static");
         if p.exists() && p.is_dir() {
             Ok(p)
         } else {
-            Err(anyhow::anyhow!("site directory not found"))
+            Err(anyhow::anyhow!("static directory not found"))
         }
     }
 }

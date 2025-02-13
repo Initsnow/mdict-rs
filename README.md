@@ -5,12 +5,12 @@ it's at an early stage of development, now only support mdx version 2.0 with enc
 
 ## usage
 
-1. put your mdx file in `resources/mdx/en` folder ando config `src/config/mod.rs`
-2. if your mdx file has separate css file, put it in `resources/static/` folder
-3. run
+1. Place your .mdx file in the `resources/dict` folder, or specify a custom directory using the `-d` option.
+2. If your .mdx file has an associated CSS file, place it in the `resources/static/` folder, or configure a custom directory using the `-s` option.
+3. Run the application.
 
 ```bash
-cargo run --bin mdict-rs
+./mdict-rs
 # now open your chrome, and search
 # http://localhost:8181
 ```
