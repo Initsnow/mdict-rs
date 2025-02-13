@@ -13,7 +13,7 @@ it's at an early stage of development, now only support mdx version 2.0 with enc
 cargo run --bin mdict-rs
 # now open your chrome, and search
 # http://localhost:8181
-``` 
+```
 
 ## screenshot
 

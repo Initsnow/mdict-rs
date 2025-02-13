@@ -1,6 +1,10 @@
 use anyhow::{Context, Result};
 use clap::Parser;
-use std::{fs::read_dir, path::PathBuf, sync::{LazyLock, Mutex}};
+use std::{
+    fs::read_dir,
+    path::PathBuf,
+    sync::{LazyLock, Mutex},
+};
 
 #[derive(Parser)]
 #[command(version, about, long_about = None)]
@@ -15,7 +19,8 @@ struct Cli {
 }
 
 static ARGS: LazyLock<Cli> = LazyLock::new(|| Cli::parse());
-pub static MDX_FILES: LazyLock<Mutex<Vec<PathBuf>>> = LazyLock::new(|| Mutex::new(get_dicts().unwrap()));
+pub static MDX_FILES: LazyLock<Mutex<Vec<PathBuf>>> =
+    LazyLock::new(|| Mutex::new(get_dicts().unwrap()));
 
 fn get_dicts() -> Result<Vec<PathBuf>> {
     let mut dicts = vec![];

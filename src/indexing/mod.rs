@@ -1,6 +1,6 @@
+use std::path::PathBuf;
 use std::sync::LazyLock;
 use std::{fs, sync::Mutex};
-use std::path::PathBuf;
 
 use anyhow::Context;
 use log::info;

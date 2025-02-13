@@ -1,7 +1,6 @@
+use crate::util::cli::MDX_FILES;
 use log::info;
 use rusqlite::{named_params, Connection};
-use crate::util::cli::MDX_FILES;
-
 
 pub fn query(word: String) -> String {
     let w = word;
