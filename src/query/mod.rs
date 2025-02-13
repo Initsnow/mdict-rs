@@ -1,12 +1,12 @@
 use log::info;
 use rusqlite::{named_params, Connection};
+use crate::util::cli::MDX_FILES;
 
-use crate::config::MDX_FILES;
 
 pub fn query(word: String) -> String {
     let w = word;
-    for file in MDX_FILES {
-        let db_file = format!("{}{}", &file.to_string(), ".db");
+    for file in MDX_FILES.lock().unwrap().iter() {
+        let db_file = file.with_extension("db");
         let conn = Connection::open(&db_file).unwrap();
         let mut stmt = conn
             .prepare("select * from MDX_INDEX WHERE text= :word limit 1;")
